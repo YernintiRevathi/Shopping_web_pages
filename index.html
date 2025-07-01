@@ -1,0 +1,229 @@
+<!DOCTYPE html> 
+<html> 
+ <head> 
+ <meta charset="UTF-8"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Home Page</title> 
+ <style> 
+ /* for fixed background for scrooling message */ 
+ .fixed-background{ 
+ color:chocolate; 
+ background-color: antiquewhite; 
+ width:100%; 
+ overflow:hidden; 
+ text-wrap:nowrap; 
+ border-radius: 10px; 
+ } 
+ /*styling text in scrolling */ 
+ .scrolling{ 
+ color:chocolate; 
+ display: inline-block; /*applies the style only upto where the text is present*/  animation: scroll-left 10s linear infinite; 
+ } 
+ /* to make the text scroll */ 
+ @keyframes scroll-left{ 
+ from{ 
+ transform:translatex(300%); 
+ } 
+ to{ 
+ transform:translatex(-100%); 
+ }
+ } 
+ /* search bar */ 
+ .search-bar{ 
+ opacity:1; 
+ height:60px; 
+ width:60%; 
+ border: none; 
+ background-color: antiquewhite; 
+ margin-left:80px; 
+ border-radius:10px; 
+ } 
+ body{ 
+ background-image:url('https://wallpapers.com/images/hd/autumn-vibes-aesthetic-book-desktop wv3k504hp9qzsi3i.jpg'); 
+ background-repeat:no-repeat; 
+ background-size:cover; 
+ background-attachment: fixed; 
+ } 
+ .button{ 
+ margin-left: 40px; 
+ color: chocolate; 
+ height:50px; 
+ width:70px; 
+ border-color: brown; 
+ border-width: 3px; 
+ border-style:solid; 
+ border-radius:10px; 
+ display:inline; 
+ } 
+ /*adding shadow to the Books heading*/ 
+ .span{ 
+ color:brown; 
+ display:inline-block; 
+ text-shadow:
+ -2px -2px 0px antiquewhite,/*shadow 2px left and 2px up */ 
+ 2px -2px 0px antiquewhite,/*shadow 2px right and 2px up */ 
+ -2px 2px 0px antiquewhite,/*shadow 2px left and 2px down */ 
+ 2px 2px 0px antiquewhite;/*shadow 2px right and 2px down */ 
+ /*horizontal offset (X): How far the shadow is positioned horizontally from the text (positive  values move the shadow to the right, negative values move it to the left). 
+vertical offset (Y): How far the shadow is positioned vertically from the text (positive values move the  shadow down, negative values move it up). 
+blur radius: This determines how blurry the shadow will be. A value of 0px means the shadow will be sharp  and crisp, with no blur effect.*/ 
+ } 
+ /* displaying catalog */ 
+ .catalog{ 
+ display:flex; 
+ flex-wrap: wrap; 
+ gap:150px; 
+ } 
+ /* books in catalog */ 
+ .books{ 
+ background-color: antiquewhite; 
+ text-align: center; 
+ font-style: bold ; 
+ font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;  text-decoration: solid; 
+ border:brown solid; 
+ border-radius: 10px; 
+ padding: 10px 10px 10px 10px; 
+ } 
+ /* three lines for sliding menu */ 
+ .sliding_menu{ 
+ position: absolute; 
+ margin-top: 30px; 
+ left: 20px; 
+ width: 30px; 
+ height: 30px;
+ display: flex; 
+ flex-direction: column; 
+ justify-content: space-between; 
+ align-items: center; 
+ cursor: pointer; 
+ z-index: 1000; /*the three lines will stay on top of the sliding menu even after it is opened*/  } 
+ .sliding_menu div{ 
+ background-color: brown; 
+ width: 30px; 
+ height: 5px; 
+ border: 2px black solid; 
+ border-radius: 2px; 
+ } 
+ .sliding_menu.top{ 
+ top: 0; 
+ } 
+ /* list after the sliding menu is opened */ 
+ .menu { 
+ position: fixed; 
+ top: 0; 
+ left: -250px; /* Initially hidden off-screen */ 
+ width: 250px; 
+ height: 100%; 
+ background-color: #452304; 
+ transition: 0.3s; 
+ padding-top: 60px; 
+ /* z-index: 1000; */ 
+ } 
+ .menu a { 
+ padding: 20px 16px; /*padding-top & bottom*/ /*padding left & right*/  /* padding-top: 10px; if this is also present then that 20px at top is now 10px*/  text-decoration: none;
+ color: antiquewhite; 
+ display: block; 
+ font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;  font-size: 18px; 
+ transition: 0.3s; 
+ } 
+ .menu a:hover { 
+ background-color: #7d5003; 
+ } 
+ /* Open menu style (when active) */ 
+ .menu.open { 
+ left: 0; /* Slide in from the left */ 
+ } 
+ </style> 
+ </head> 
+ <body> 
+ <div class="fixed-background"> 
+ <h1 class="scrolling">Welcome to Amazon Book Store :)</h1> 
+ </div> 
+ <!-- sliding menu --> 
+ <div class="sliding_menu" id="sliding_menu" onclick="slide()"> 
+ <div></div> 
+ <div></div> 
+ <div></div> 
+ </div> 
+ <div class="menu" id="menu"> 
+ <a href="User_profile.html" target="_blank">Your  Profile</a> 
+ </div> 
+ <!--for search bar-->
+ <div style="margin-top:20px;"> 
+ <form action="/search" method="get" style="display:inline;"> 
+ <input class="search-bar" type="text" name="query" placeholder=" Search for  books,genres,authors..." required> 
+ <button type="submit" style="height:40px;"> </button> 
+ </form> 
+ <!-- input is an inline element by default --> 
+ <!-- register --> 
+ <button class="button" type="submit" name="register" id="register"  
+onclick="register()">Register</button> 
+ <!-- login --> 
+ <form action="login.html" target="_blank" method="get"  style="display:inline;"> 
+ <button class="button" type="submit">Login</button> 
+ </form> 
+ <!-- shopping cart --> 
+ <!-- <form href="C:\Users\HP\OneDrive\Documents\WT\shopping_cart.html"  target="_blank"style="display:inline;;"> 
+ <button class="button" type="submit"><img src="https://cdn-icons 
+png.flaticon.com/512/3481/3481069.png" style="height: 27px; width: 27px;"></button>  </form> --> 
+ <form action="shopping_cart.html" target="_blank"  style="display:inline;"> 
+ <button class="button" type="submit" > 
+ <img src="https://cdn-icons-png.flaticon.com/512/3481/3481069.png" style="height: 30px;  width: 30px; vertical-align: middle;"> 
+ </button> 
+ </form> 
+  
+ </div> 
+ <!-- books catalog --> 
+ <div class="span"> 
+ <h1>Books</h1> 
+ </div> 
+ <div class="catalog">
+ <div class="books"> 
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDLgWykF_lUlwF4Hu9Q 2S3NDd1gYkiugk1w&s"> 
+ <p>"To Kill a Mockingbird" </p> 
+ <p> - Harper Lee</p> 
+ </div> 
+ <div class="books"> 
+ <img src="https://encrypted 
+tbn0.gstatic.com/images?q=tbn:ANd9GcQTrO5dL3mThe9MCr5sRw7LraJ-hdRmA3jZFg&s">  <p>"Ikigai: The Japanese Secret to a Long and Happy Life"</p> 
+ <p> - Héctor García and Francesc Miralles.</p> 
+ </div> 
+ <div class="books"> 
+ <img src="https://encrypted 
+tbn0.gstatic.com/images?q=tbn:ANd9GcT4lmgfjRuedwlUe5x32skQqpkZmLt7BIbSfw&s">  <p>"Pride and Prejudice"</p> 
+ <p> - Jane Austen</p> 
+ </div> 
+ <div class="books"> 
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxWslVr0Q nzt89qTPkBAAojF6a_0D6_rDew&s"> 
+ <p>"The Great Gatsby"</p> 
+ <p> - F. Scott Fitzgerald</p> 
+ </div> 
+ <div class="books"> 
+ <img src="https://encrypted 
+tbn0.gstatic.com/images?q=tbn:ANd9GcRNtIlma8682zhnfthKuqf5Pox1kdA2Zo9y1g&s">  <p>"The Hobbit"</p> 
+ <p> - J.R.R. Tolkien</p> 
+ </div> 
+ <div class="books"> 
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThOUF8isuD27P 27DC0WjFkcimICBv0hh7gw&s"> 
+ <p>"Think like a monk"</p> 
+ <p> - Jay Shetty</p> 
+ </div>
+ </div> 
+ <script> 
+ function register(){ 
+ window.open("registration.html");  } 
+ //window.open("C:\Users\HP\OneDrive\Documents\WT\Registration.html") this fails because //No Automatic File Path Conversion: 
+//In JavaScript, when you pass a Windows-style path (C:\...) to window.open, the browser  doesn't know how to interpret it  
+//directly. Unlike <form>, it does not automatically convert the path to a file:/// URL.  
+function slide(){ 
+ var menu=document.getElementById('menu'); 
+ var lines=document.getElementById('sliding_menu'); 
+ lines.classList.toggle('top'); 
+ menu.classList.toggle('open'); 
+  
+ } 
+  
+ </script> 
+ <!--window.open(url, target, features); target is by default _blank--> 
+  
+ </body> 
+</html> 

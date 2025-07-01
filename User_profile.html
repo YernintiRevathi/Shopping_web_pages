@@ -1,0 +1,78 @@
+<!DOCTYPE html> 
+<html> 
+ <head> 
+ <meta charset="UTF-8"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+ <title>User Profile Page</title> 
+ <style> 
+ .fixed-background{ 
+ color:chocolate; 
+ background-color: antiquewhite; 
+ width:100%; 
+ overflow:hidden; 
+ text-wrap:nowrap; 
+ border-radius: 10px; 
+ } 
+ body{ 
+ background-image:url('https://wallpapers.com/images/hd/autumn-vibes-aesthetic-book-desktop wv3k504hp9qzsi3i.jpg'); 
+ background-repeat:no-repeat; 
+ background-size:cover; 
+ background-attachment: fixed; 
+ } 
+ .scrolling{ 
+ display: inline-block; /*applies the style only upto where the text is present*/  animation: scroll-left 10s linear infinite; 
+ }
+ @keyframes scroll-left{ 
+ from{ 
+ transform:translatex(300%); 
+ } 
+ to{ 
+ transform:translatex(-100%); 
+ } 
+ } 
+ .form-styling{ 
+ margin-left:auto; 
+ margin-right:auto; 
+ margin-top:80px; 
+ width:400px; 
+ display:block; 
+ border-color: chocolate; 
+ border-width: 3px; 
+ border-style:solid; 
+ position:center; 
+ background-color:bisque; 
+ border-radius:10px; 
+ /*text-align:center;*/ 
+ } 
+ label,input,p{ 
+ display:block; 
+ margin-left:30px; 
+ } 
+ .center{ 
+ text-align:center; 
+ } 
+ </style> 
+ </head> 
+ <body> 
+ <!--for scrolling effect--> 
+ <!-- <marquee behaviour="scroll" direction="left">
+ Welcome to Amazon Bookstore!! 
+ </marquee> --> 
+ <div class="fixed-background"> 
+ <h1 class="scrolling">Welcome to Amazon Book Store :)</h1> 
+ </div> 
+ <div class="form-styling"> 
+ <h2 class="center">Your Profile</h2> 
+ <form id="user_profile"> 
+ <label for="name" >Full Name:</label> 
+ <input type="text" name="name" id="name" value="Revathi" > 
+ <label for="email" >Email Address:</label> 
+ <input type="email" name="email" id="email" value="reeshmayerninti@gmail.com" >  <label for="password" >Change Password:</label> 
+ <input type="password" name="pswd" id="password" value="******"> 
+ <br> 
+ <input type="submit" name="button" id="button" value="Save"> 
+ </form> 
+ <br> 
+ </div> 
+ </body> 
+</html> 
